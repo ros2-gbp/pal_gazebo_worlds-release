@@ -24,7 +24,9 @@ from launch.actions import (
     ExecuteProcess,
     OpaqueFunction
 )
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
+from launch.substitutions import LaunchConfiguration
+from launch.conditions import IfCondition
+from launch_pal.robot_arguments import CommonArgs
 
 
 def start_gzserver(context, *args, **kwargs):
@@ -43,14 +45,13 @@ def start_gzserver(context, *args, **kwargs):
     elif os.path.exists(os.path.join(pkg_path, 'worlds', world_name + '.world')):
         world = os.path.join(pkg_path, 'worlds', world_name + '.world')
 
-    params_file = PathJoinSubstitution(
-        substitutions=[pkg_path, 'config', 'gazebo_params.yaml'])
+    gazebo_clock_rate = LaunchConfiguration('clock_rate').perform(context)
 
     # Command to start the gazebo server.
     gazebo_server_cmd_line = [
         'gzserver', '-s', 'libgazebo_ros_init.so',
         '-s', 'libgazebo_ros_factory.so', world,
-        '--ros-args', '--params-file', params_file]
+        '--ros-args', '--param', f"publish_rate:={gazebo_clock_rate}"]
     # Start the server under the gdb framework.
     debug = LaunchConfiguration('debug').perform(context)
     if debug == 'True':
@@ -95,18 +96,25 @@ def generate_launch_description():
         choices=['True', 'False'],
         description='If debug start the gazebo world into a gdb session in an xterm terminal'
     )
+    declare_clock_rate = DeclareLaunchArgument(
+        'clock_rate', default_value='200.0',
+        description='The rate at which the gazebo clock needs to be published!'
+    )
 
     start_gazebo_server_cmd = OpaqueFunction(function=start_gzserver)
 
     start_gazebo_client_cmd = ExecuteProcess(
-        cmd=['gzclient'], output='screen')
+        cmd=['gzclient'], output='screen',
+        condition=IfCondition(LaunchConfiguration('gzclient'))
+    )
 
     # Create the launch description and populate
     ld = LaunchDescription()
 
     ld.add_action(declare_debug)
     ld.add_action(declare_world_name)
-
+    ld.add_action(declare_clock_rate)
+    ld.add_action(CommonArgs.gzclient)
     ld.add_action(SetEnvironmentVariable('GAZEBO_MODEL_PATH', model_path))
     # Using this prevents shared library from being found
     # ld.add_action(SetEnvironmentVariable('GAZEBO_RESOURCE_PATH', resource_path))

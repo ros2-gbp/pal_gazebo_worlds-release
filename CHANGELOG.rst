@@ -2,6 +2,49 @@
 Changelog for package pal_gazebo_worlds
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+4.9.0 (2025-10-28)
+------------------
+* added roscon_es_25 world
+* Contributors: andreacapodacqua
+
+4.8.0 (2025-10-09)
+------------------
+* added gzclient to launch arguments
+* Contributors: martinaannicelli
+
+4.7.0 (2025-10-07)
+------------------
+* added markermaps
+* Contributors: antoniobrandi
+
+4.6.1 (2025-09-15)
+------------------
+* Remove unused params file
+* Fix the issue with the fixed clock rate on TALOS
+* Contributors: Sai Kishor Kothakota
+
+4.6.0 (2025-08-20)
+------------------
+* improved resolution of apriltag
+* added apriltag models and a pal office world with them
+* Contributors: andreacapodacqua, salvatorepiccolo
+
+4.5.1 (2025-08-11)
+------------------
+* removed omni base, added xml version and changed sdf version
+* Contributors: salvatorepiccolo
+
+4.5.0 (2025-07-25)
+------------------
+* added dock for pmb2
+* world with both aruco n dock
+* Contributors: martinaannicelli
+
+4.4.0 (2025-06-26)
+------------------
+* modified aruco size for simulation
+* Contributors: martinaannicelli
+
 4.3.0 (2024-08-27)
 ------------------
 * added new aruco 0

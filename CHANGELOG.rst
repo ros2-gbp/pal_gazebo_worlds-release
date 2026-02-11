@@ -2,6 +2,39 @@
 Changelog for package pal_gazebo_worlds
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+4.14.0 (2026-01-14)
+-------------------
+* add pal office for ignition
+* Contributors: thomasung
+
+4.13.0 (2025-12-16)
+-------------------
+* fix to 95 cm
+* added 95 cm corridor for test
+* Contributors: andreacapodacqua
+
+4.12.0 (2025-12-05)
+-------------------
+* Add support for new gazebo
+* remove unused import
+* Allow the user to start gazebo or ignition with launch argument.
+* Contributors: Maximilien Naveau, Noel Jimenez
+
+4.11.2 (2025-12-02)
+-------------------
+* Update home_w_aruco.world
+* Contributors: martinaannicelli
+
+4.11.1 (2025-11-28)
+-------------------
+* fix name
+* Contributors: martinaannicelli
+
+4.11.0 (2025-11-28)
+-------------------
+* added home with aruco
+* Contributors: martinaannicelli
+
 4.10.0 (2025-11-05)
 -------------------
 * added new world for controller server tests

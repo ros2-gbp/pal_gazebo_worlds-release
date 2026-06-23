@@ -2,6 +2,29 @@
 Changelog for package pal_gazebo_worlds
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+4.15.1 (2026-06-03)
+-------------------
+* register models using ament hooks
+* Contributors: thomasung
+
+4.15.0 (2026-05-07)
+-------------------
+* Added world for controller test
+* thread resolved
+* removing unused env var from ignition
+* removed uninitialized gazebo_model_path and using environment variable
+* fixing
+* flake8
+* fix
+* added check on sdf extension for ignition worlds
+* Contributors: martinaannicelli
+
+4.14.1 (2026-03-11)
+-------------------
+* add imu system to envs
+* move plugin declarations to world xml tag
+* Contributors: thomasung
+
 4.14.0 (2026-01-14)
 -------------------
 * add pal office for ignition
